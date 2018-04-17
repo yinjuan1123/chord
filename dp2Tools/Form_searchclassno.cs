@@ -49,45 +49,71 @@ namespace dp2Tools
 
         private void btn_search_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < txt_chinese.Lines.Length; i++)
+            string str_result = "";
+            txt_result.Text = "";
+            string[] lines = this.GetLines();
+            foreach (string acc in lines)
             {
-                txt_result.Text = txt_result.Text + "查询" + txt_chinese.Lines[i].ToString() + "开始\r\n";
+                if (acc == "")
+                    continue;
+                str_result = str_result + "查询" + acc.ToString() + "开始\r\n";
                 string str_chinese = "";
-                for (int j = txt_chinese.Lines[i].Length; j > 0; j--)
+                for (int j = acc.Length; j > 0; j--)
                 {
 
-                    str_chinese = txt_chinese.Lines[i].Substring(0, j);
+                    str_chinese = acc.Substring(0, j);
                     if (serchBasicNo(str_chinese))
                     {
-                        txt_result.Text = txt_result.Text + str_chinese + "命中\r\n";
+                        str_result = str_result + str_chinese + "命中\r\n";
                         break;
                     }
                     else
                     {
-                        txt_result.Text = txt_result.Text + str_chinese + "未命中\r\n";
+                        str_result = str_result + str_chinese + "未命中\r\n";
                     }
                 }
-                txt_result.Text = txt_result.Text + "查询" + txt_chinese.Lines[i].ToString() + "结束\r\n";
+                str_result = str_result + "查询" + acc.ToString() + "结束\r\n";
             }
-            for (int i = 0; i < list_basic.Count; i++)
+            txt_result.Text = str_result;
+           /* for (int i = 0; i < list_basic.Count; i++)
             {
                 txt_result.Text = txt_result.Text + list_basic[i].getBasicNo().ToString() +"命中"+ list_basic[i].getCount().ToString() + "次\r\n";
-            }
-            
+            }*/
+
         }
         public bool serchBasicNo(string inp_classno)
         {
             bool flag = false;
             for (int i = 0; i < list_basic.Count; i++)
             {
-                if (list_basic[i].getBasicNo().ToString() == inp_classno)
+                if (list_basic[i].basicno == inp_classno)
                 {
-                    list_basic[i].setBasicCount(list_basic[i].getCount() + 1);
+                    list_basic[i].Count=list_basic[i].Count + 1;
                     flag = true;
                     break;
                 }
              }
             return flag;
+        }
+
+        private void btn_searchCount_Click(object sender, EventArgs e)
+        {
+            string str_count = "";
+            txt_result.Text = "";
+            for (int i = 0; i < list_basic.Count; i++)
+            {
+                str_count = str_count + list_basic[i].basicno+"命中"+ list_basic[i].count.ToString() + "次\r\n";
+            }
+            txt_result.Text = str_count;
+
+        }
+        public string[] GetLines()
+        {
+            string text = this.txt_chinese.Text.Trim();
+            text = text.Replace("\r\n", "\n");
+            text = text.Replace("\r", "\n");
+            string[] lines = text.Split(new char[] { '\n' });
+            return lines;
         }
     }
 }

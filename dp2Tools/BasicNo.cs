@@ -15,7 +15,17 @@ namespace dp2Tools
             this.count = basiccount;
             this.basicno = basicno;
         }
-        public void setBasicCount(int basiccount)
+        public string  Basicno
+        {
+            get { return basicno;}
+            set { this.basicno = value;}
+        }
+        public int Count
+        {
+            get { return count; }
+            set { this.count = value; }
+        }
+       /* public void setBasicCount(int basiccount)
         {
             this.count = basiccount;
         }
@@ -30,6 +40,6 @@ namespace dp2Tools
         public int getCount()
         {
             return this.count;
-        }
+        }*/
     }
 }

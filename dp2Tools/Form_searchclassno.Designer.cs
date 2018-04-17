@@ -32,6 +32,7 @@
             this.btn_search = new System.Windows.Forms.Button();
             this.lbl_msg = new System.Windows.Forms.Label();
             this.txt_result = new System.Windows.Forms.TextBox();
+            this.btn_searchCount = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txt_chinese
@@ -56,10 +57,11 @@
             // lbl_msg
             // 
             this.lbl_msg.AutoSize = true;
-            this.lbl_msg.Location = new System.Drawing.Point(212, 160);
+            this.lbl_msg.Location = new System.Drawing.Point(423, 160);
             this.lbl_msg.Name = "lbl_msg";
-            this.lbl_msg.Size = new System.Drawing.Size(0, 24);
+            this.lbl_msg.Size = new System.Drawing.Size(34, 24);
             this.lbl_msg.TabIndex = 2;
+             
             // 
             // txt_result
             // 
@@ -70,11 +72,22 @@
             this.txt_result.Size = new System.Drawing.Size(1629, 487);
             this.txt_result.TabIndex = 3;
             // 
+            // btn_searchCount
+            // 
+            this.btn_searchCount.Location = new System.Drawing.Point(173, 142);
+            this.btn_searchCount.Name = "btn_searchCount";
+            this.btn_searchCount.Size = new System.Drawing.Size(169, 59);
+            this.btn_searchCount.TabIndex = 4;
+            this.btn_searchCount.Text = "命中次数";
+            this.btn_searchCount.UseVisualStyleBackColor = true;
+            this.btn_searchCount.Click += new System.EventHandler(this.btn_searchCount_Click);
+            // 
             // Form_searchclassno
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1641, 733);
+            this.Controls.Add(this.btn_searchCount);
             this.Controls.Add(this.txt_result);
             this.Controls.Add(this.lbl_msg);
             this.Controls.Add(this.btn_search);
@@ -92,5 +105,6 @@
         private System.Windows.Forms.Button btn_search;
         private System.Windows.Forms.Label lbl_msg;
         private System.Windows.Forms.TextBox txt_result;
+        private System.Windows.Forms.Button btn_searchCount;
     }
 }
